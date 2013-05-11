@@ -89,6 +89,7 @@ class Avatarloginban
 	public function toArray()
 	{
 		return [
+			'entity' => 'Avatarloginban',
 			'avatarloginban_id' => $this->getAvatarloginbanId(),
 			'created' => $this->getCreatedTimestamp(),
 			'avatar_id' => $this->getAvatarId(),
