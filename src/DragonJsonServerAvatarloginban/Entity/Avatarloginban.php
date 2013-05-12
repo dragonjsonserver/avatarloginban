@@ -32,6 +32,17 @@ class Avatarloginban
 	protected $end;
 	
 	/**
+	 * Setzt die ID des Avatarloginbanns
+	 * @param integer $avatarloginban_id
+	 * @return Avatarloginban
+	 */
+	protected function setAvatarloginbanId($avatarloginban_id)
+	{
+		$this->avatarloginban_id = $avatarloginban_id;
+		return $this;
+	}
+	
+	/**
 	 * Gibt die ID des Avatarloginbanns zurück
 	 * @return integer
 	 */
@@ -43,6 +54,7 @@ class Avatarloginban
 	/**
 	 * Setzt den Endzeitpunkt des Avatarloginbanns
 	 * @param \DateTime $end
+	 * @return Avatarloginban
 	 */
 	public function setEnd(\DateTime $end)
 	{
@@ -53,6 +65,7 @@ class Avatarloginban
 	/**
 	 * Setzt den Endzeitpunkt des Avatarloginbanns als Unix Timestamp
 	 * @param integer $end
+	 * @return Avatarloginban
 	 */
 	public function setEndTimestamp($end)
 	{
@@ -83,13 +96,27 @@ class Avatarloginban
 	}
 	
 	/**
+	 * Setzt die Attribute des Avatarloginbanns aus dem Array
+	 * @param array $array
+	 * @return Avatarloginban
+	 */
+	public function fromArray(array $array)
+	{
+		return $this
+			->setAvatarloginbanId($array['avatarloginban_id'])
+			->setCreatedTimestamp($array['created'])
+			->setAvatarId($array['avatar_id'])
+			->setEndTimestamp($array['end']);
+	}
+	
+	/**
 	 * Gibt die Attribute des Avatarloginbanns als Array zurück
 	 * @return array
 	 */
 	public function toArray()
 	{
 		return [
-			'entity' => 'Avatarloginban',
+			'__className' => __CLASS__,
 			'avatarloginban_id' => $this->getAvatarloginbanId(),
 			'created' => $this->getCreatedTimestamp(),
 			'avatar_id' => $this->getAvatarId(),
