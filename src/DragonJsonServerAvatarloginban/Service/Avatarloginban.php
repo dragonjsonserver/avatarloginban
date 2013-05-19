@@ -34,7 +34,7 @@ class Avatarloginban
 		} else {
 			$avatarloginban->setEnd($end);
 		}
-		$this->getServiceManager()->get('Doctrine')->transactional(function ($entityManager) use ($avatarloginban) {
+		$this->getServiceManager()->get('\DragonJsonServerDoctrine\Service\Doctrine')->transactional(function ($entityManager) use ($avatarloginban) {
 			$entityManager->persist($avatarloginban);
 			$entityManager->flush();
 			$this->getEventManager()->trigger(
@@ -53,7 +53,7 @@ class Avatarloginban
 	 */
 	public function removeAvatarloginban(\DragonJsonServerAvatarloginban\Entity\Avatarloginban $avatarloginban)
 	{
-		$this->getServiceManager()->get('Doctrine')->transactional(function ($entityManager) use ($avatarloginban) {
+		$this->getServiceManager()->get('\DragonJsonServerDoctrine\Service\Doctrine')->transactional(function ($entityManager) use ($avatarloginban) {
 			$this->getEventManager()->trigger(
 				(new \DragonJsonServerAvatarloginban\Event\RemoveAvatarloginban())
 					->setTarget($this)

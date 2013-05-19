@@ -49,7 +49,7 @@ class Module
     	$sharedManager = $moduleManager->getEventManager()->getSharedManager();
     	$sharedManager->attach('DragonJsonServerAvatar\Module', 'LoadAvatar', 
 	    	function (\DragonJsonServerAvatar\Event\LoadAvatar $eventLoadAvatar) {
-	    		$serviceAvatarloginban = $this->getServiceManager()->get('Avatarloginban');
+	    		$serviceAvatarloginban = $this->getServiceManager()->get('\DragonJsonServerAvatarloginban\Service\Avatarloginban');
 	    		$avatarloginban = $serviceAvatarloginban->getAvatarloginbanByAvatarId($eventLoadAvatar->getAvatar()->getAvatarId(), false);
 	    		if (null === $avatarloginban) {
 	    			return;
@@ -59,7 +59,7 @@ class Module
     	);
     	$sharedManager->attach('DragonJsonServerAvatar\Service\Avatar', 'RemoveAvatar', 
 	    	function (\DragonJsonServerAvatar\Event\RemoveAvatar $eventRemoveAvatar) {
-	    		$serviceAvatarloginban = $this->getServiceManager()->get('Avatarloginban');
+	    		$serviceAvatarloginban = $this->getServiceManager()->get('\DragonJsonServerAvatarloginban\Service\Avatarloginban');
 	    		$avatarloginban = $serviceAvatarloginban->getAvatarloginbanByAvatarId($eventRemoveAvatar->getAvatar()->getAvatarId(), false);
 	    		if (null === $avatarloginban) {
 	    			return;
